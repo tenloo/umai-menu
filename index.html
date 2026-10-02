@@ -120,7 +120,9 @@ svg{display:block}
 .slide .photo{position:absolute; z-index:1; top:0; right:0; bottom:0; width:50%}
 .slide .photo img{width:100%; height:100%; object-fit:cover; display:block}
 @media (min-width:700px){
-  .slide.has-photo .inner{padding-right:calc(50% + 40px)}
+  /* El % se mide sobre el ancho de toda la pantalla, pero el texto vive en un bloque de máximo 1280px:
+     con min() el margen nunca pasa de media columna (640px) y el texto no se aplasta en pantallas grandes. */
+  .slide.has-photo .inner{padding-right:calc(min(50%, 640px) + 40px)}
   .slide.has-photo h2{font-size:clamp(50px,5.6vw,92px); white-space:nowrap}
   .slide.has-photo .price{font-size:clamp(46px,4.8vw,80px)}
 }
